@@ -121,3 +121,17 @@ CALCULATE(
     ALL(data[rok],data[mesic]))
 RETURN
 IF(max_teplota = max_teplota_lokalita,"gold")
+__________________________________________________
+
+15 nejteplejsi rok mesice = 
+
+-- maximalni teplota rok,mesic,lokalita
+VAR max_teplota = MAX(data[maximalni_teplota])
+
+-- maximalni teplota, mesic, lokalita
+
+VAR max_teplota_mesic = 
+CALCULATE(MAX(data[maximalni_teplota]),ALL(data[rok]))
+
+RETURN
+IF(max_teplota = max_teplota_mesic,"GOLD")
