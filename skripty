@@ -2,3 +2,12 @@
 -- suma srazek v danem roce, tj. respektuji
 -- filtry vizualu
 SUM(data[srazky])
+
+___________________________________________________
+
+02 suma srazek ruzyne = 
+
+-- Respektujeme filtr vizualu, pridavame dalsi
+
+CALCULATE(SUM(data[srazky]),
+FILTER(data,data[lokalita] = "RUZYNE"))
