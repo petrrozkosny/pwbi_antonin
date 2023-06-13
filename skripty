@@ -94,3 +94,18 @@ CALCULATE(
 CONCATENATEX(
     FILTER(data,data[srazky]=MAX(data[srazky])),
 data[mesic],", ")
+
+_________________________________________-
+
+dim_datumy = 
+ADDCOLUMNS(
+CALENDARAUTO(),
+"rok",YEAR([Date]),
+"mesic",MONTH([Date]),
+"den",DAY([Date]),
+"den tydne",WEEKDAY([Date],2),
+"pracovni den",
+SWITCH(TRUE(),
+WEEKDAY([Date],2)>5,"nepracovni den",
+MONTH([Date]) = 5 && DAY([Date])=8,"nepracovni den",
+[Date]  IN {DATE(2023,04,16)},"nepracovni den","pracovni den"))
