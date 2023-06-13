@@ -57,3 +57,16 @@ CALCULATE(
     SUM(data[srazky]),
  --   FILTER(data,
     data[lokalita]="RUZYNE")
+    
+ ___________________________________________________________
+ 
+ 
+ 06 suma srazek ruzyne predchozi rok = 
+
+-- tj. ve stejnem mesici predchoziho
+
+CALCULATE(
+    SUM(data[srazky]),
+    FILTER(ALL(data[rok],data[lokalita]),    
+    data[lokalita] = "RUZYNE" &&
+    data[rok] = SELECTEDVALUE(data[rok])-1))
