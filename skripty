@@ -109,3 +109,15 @@ SWITCH(TRUE(),
 WEEKDAY([Date],2)>5,"nepracovni den",
 MONTH([Date]) = 5 && DAY([Date])=8,"nepracovni den",
 [Date]  IN {DATE(2023,04,16)},"nepracovni den","pracovni den"))
+
+________________________________________________-
+
+14 maximalni teplota = 
+VAR max_teplota = MAX(data[maximalni_teplota])
+-- maximalni teplota vsechny roky, mesice, dana lokalita
+VAR max_teplota_lokalita = 
+CALCULATE(
+    MAX(data[maximalni_teplota]),
+    ALL(data[rok],data[mesic]))
+RETURN
+IF(max_teplota = max_teplota_lokalita,"gold")
