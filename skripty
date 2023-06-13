@@ -11,3 +11,9 @@ ___________________________________________________
 
 CALCULATE(SUM(data[srazky]),
 FILTER(data,data[lokalita] = "RUZYNE"))
+
+_________________________________________________________
+03 suma srazek vsechny roky = 
+-- Tj. rusim filtry vizualu, zadne nenastavuji
+CALCULATE(
+    SUM(data[srazky]),ALL(data[rok]))
