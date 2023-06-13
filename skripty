@@ -49,3 +49,11 @@ VAR _3 =
 
 
 return _3
+
+__________________________________________________________
+05 suma srazek ruzyne = 
+-- v danem roce a mesici
+CALCULATE(
+    SUM(data[srazky]),
+ --   FILTER(data,
+    data[lokalita]="RUZYNE")
