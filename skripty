@@ -82,3 +82,15 @@ CALCULATE(
     FILTER(ALL(data[lokalita],data[rok]),
     data[lokalita] = "RUZYNE" &&
     data[rok]  = CALCULATE(MIN(data[rok]),ALL(data[rok]))))
+    
+    _________________________________________________
+    
+    11 mesic max srazek = 
+// CALCULATE(
+//     min(data[mesic]),
+//     FILTER(ALL(data[srazky]),
+//     data[srazky] = MAX(data[srazky])))
+
+CONCATENATEX(
+    FILTER(data,data[srazky]=MAX(data[srazky])),
+data[mesic],", ")
