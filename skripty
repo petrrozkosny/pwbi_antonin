@@ -17,3 +17,35 @@ _________________________________________________________
 -- Tj. rusim filtry vizualu, zadne nenastavuji
 CALCULATE(
     SUM(data[srazky]),ALL(data[rok]))
+
+_________________________________________________________
+
+04 suma srazek rok 2000 = 
+
+-- TAKTO NE
+VAR _1 = 
+CALCULATE(
+    -- krok3: Funkce SUM() scita sloupec
+    -- srazky tabulky vracene funkci FILTER
+    SUM(data[srazky]),
+    -- krok2: Funkce FILTER nastavuje
+    -- filtr na sloupec rok a vraci tabulku
+    FILTER(
+        -- krok1 = Funkce ALL() vraci kopii
+        -- tabulky data zbavenou vsech filtru
+        ALL(data),data[rok] = 2000))
+
+-- Takto ano, pokud nefunguje VAR _3 =
+
+VAR _2 = CALCULATE(
+    SUM(data[srazky]),
+    FILTER(ALL(data[rok]),data[rok] = 2000))
+
+-- takto ano
+VAR _3 =
+    CALCULATE(
+        SUM(data[srazky]),
+        data[rok] = 2000)
+
+
+return _3
