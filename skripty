@@ -135,3 +135,21 @@ CALCULATE(MAX(data[maximalni_teplota]),ALL(data[rok]))
 
 RETURN
 IF(max_teplota = max_teplota_mesic,"GOLD")
+
+___________________________________________________________
+
+16 max a min teplota = 
+
+VAR max_teplota = MAX(data[maximalni_teplota])
+
+VAR max_teplota_vse = CALCULATE(MAX(data[maximalni_teplota]),ALL(data[rok],data[mesic]))
+
+VAR min_max_teplota = 
+    MINX(
+    ALL(data[rok],data[mesic]),
+    CALCULATE(MAX(data[maximalni_teplota])))
+
+RETURN 
+SWITCH(TRUE(),
+max_teplota =max_teplota_vse,"GOLD",
+max_teplota = min_max_teplota, "CYAN")
