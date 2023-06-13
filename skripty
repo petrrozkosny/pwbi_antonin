@@ -153,3 +153,15 @@ RETURN
 SWITCH(TRUE(),
 max_teplota =max_teplota_vse,"GOLD",
 max_teplota = min_max_teplota, "CYAN")
+
+___________________________________________________________
+
+17 nazev grafu = 
+
+SWITCH(TRUE()
+,HASONEVALUE(data[lokalita]),
+"Maximalni teploty v lokalite "&SELECTEDVALUE(data[lokalita])
+,ISFILTERED(data[lokalita]),
+"Maximalni teploty v lokalitach "&
+CONCATENATEX(DISTINCT(data[lokalita]),data[lokalita],", "),
+"Maximalni teploty ve vsech lokalitach")
