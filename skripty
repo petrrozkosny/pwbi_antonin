@@ -70,3 +70,15 @@ CALCULATE(
     FILTER(ALL(data[rok],data[lokalita]),    
     data[lokalita] = "RUZYNE" &&
     data[rok] = SELECTEDVALUE(data[rok])-1))
+    
+    __________________________________________________________-
+    
+    07 suma srazek minimalni rok ruzyne = 
+
+--  danem mesici, v minimalnim roce, lokalite ruzyne
+
+CALCULATE(
+    SUM(data[srazky]),
+    FILTER(ALL(data[lokalita],data[rok]),
+    data[lokalita] = "RUZYNE" &&
+    data[rok]  = CALCULATE(MIN(data[rok]),ALL(data[rok]))))
